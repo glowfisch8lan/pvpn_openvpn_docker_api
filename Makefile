@@ -15,6 +15,10 @@ dev:
 key:
 	openssl rand -hex 40
 
+restart:
+	docker restart ovpn_api
+	docker restart ovpn_instance
+
 copykey:
 	docker-compose exec -ti ovpn_instance sh -c "cp /etc/openvpn/ca.crt  /opt/crt/ca.crt"
 	docker-compose exec -ti ovpn_instance sh -c "cp /etc/openvpn/pvpn.key /opt/crt/server.key"

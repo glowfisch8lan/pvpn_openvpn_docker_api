@@ -135,7 +135,7 @@ class CertService(BaseService):
         material = load_func(format, buf)
         return material
 
-    def retrieve_key(self, ca_key_file_path, passphrase):
+    def retrieve_key(self, ca_key_file_path, passphrase=None):
         # load CA key
         with open(ca_key_file_path, "r") as f:
             ca_key_buf = bytes(f.read(), 'utf-8')
