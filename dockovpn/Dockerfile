@@ -35,7 +35,7 @@ RUN apk add --no-cache openvpn easy-rsa bash netcat-openbsd zip dumb-init && \
 
 EXPOSE 1194/udp
 #переход на API поэтому клиентский конфиг не нужен
-#EXPOSE 8080/tcp
+EXPOSE 8080/tcp
 
 VOLUME [ "/opt/Dockovpn_data" ]
 
