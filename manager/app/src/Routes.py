@@ -25,11 +25,11 @@ def api():
 def route(app) -> None:
     app.add_url_rule(rule='/', view_func=VPNMainController().index, methods=['GET'])
     #app.add_url_rule(rule='/vpn/<cn>', view_func=VPNConfigController().download_file, methods=['GET'])
-    app.register_blueprint(api(), url_prefix='/api')
+    app.register_blueprint(api(), url_prefix='/api/' + os.getenv("AUTH_KEY"))
 
 
     app.before_request_funcs = {
-        'api/' + os.getenv("AUTH_KEY"): [AuthMiddleware().handle]
+        'api' : [AuthMiddleware().handle]
     }
 
     return None
