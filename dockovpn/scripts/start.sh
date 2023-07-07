@@ -40,11 +40,11 @@ EOF
     # Your new CA certificate file for publishing is at:
     # /opt/Dockovpn_data/pki/ca.crt
 
-    easyrsa gen-req pvpn 124578 << EOF2
+    easyrsa gen-req pvpn nopass << EOF2
 
 EOF2
     # Keypair and certificate request completed. Your files are:
-    # req: /opt/Dockovpn_data/pki/reqs/pvpnreq
+    # req: /opt/Dockovpn_data/pki/reqs/pvpn.req
     # key: /opt/Dockovpn_data/pki/private/pvpn.key
 
     easyrsa sign-req server pvpn << EOF3
