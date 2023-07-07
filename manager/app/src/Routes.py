@@ -1,3 +1,5 @@
+import os
+
 from flask import Blueprint
 
 from src.middlewares.AuthMiddleware import AuthMiddleware
@@ -22,12 +24,12 @@ def api():
 
 def route(app) -> None:
     app.add_url_rule(rule='/', view_func=VPNMainController().index, methods=['GET'])
-    app.add_url_rule(rule='/vpn/<cn>', view_func=VPNConfigController().download_file, methods=['GET'])
+    #app.add_url_rule(rule='/vpn/<cn>', view_func=VPNConfigController().download_file, methods=['GET'])
     app.register_blueprint(api(), url_prefix='/api')
 
 
     app.before_request_funcs = {
-        'api': [AuthMiddleware().handle]
+        'api/' + os.getenv("AUTH_KEY"): [AuthMiddleware().handle]
     }
 
     return None

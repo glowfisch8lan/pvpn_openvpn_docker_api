@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+
 rebuild:
 	export DEBUG=0; \
 	./rebuild.sh
@@ -13,7 +14,7 @@ dev:
 	./deploy.sh
 
 key:
-	openssl rand -hex 40
+	openssl rand -hex 10
 
 restart:
 	docker restart ovpn_api
