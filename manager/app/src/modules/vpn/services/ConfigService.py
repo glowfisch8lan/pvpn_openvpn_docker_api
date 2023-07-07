@@ -68,7 +68,7 @@ class ConfigService(BaseService):
             clientcert.decode(),
             clientkey.decode(),
             takey,
-            'remote' + os.getenv('HOST_ADDR') + ' ' + os.getenv('VPN_PORT')
+            'remote ' + os.getenv('HOST_ADDR') + ' ' + os.getenv('VPN_PORT')
         )
 
         # Write our file.
