@@ -78,7 +78,7 @@ if [[ -n $IS_INITIAL ]]; then
     echo " "
 
     # Generate client config
-#    ./genclient.sh $@ Переход на API -> поэтому генерировать клиентский конфиг не надо
+    ./genclient.sh #$@ Переход на API -> поэтому генерировать клиентский конфиг не надо
 fi
 
 tail -f /dev/null
