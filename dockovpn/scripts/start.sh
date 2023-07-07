@@ -40,17 +40,17 @@ EOF
     # Your new CA certificate file for publishing is at:
     # /opt/Dockovpn_data/pki/ca.crt
 
-    easyrsa gen-req PVPN 124578 << EOF2
+    easyrsa gen-req pvpn 124578 << EOF2
 
 EOF2
     # Keypair and certificate request completed. Your files are:
-    # req: /opt/Dockovpn_data/pki/reqs/PVPN.req
-    # key: /opt/Dockovpn_data/pki/private/PVPN.key
+    # req: /opt/Dockovpn_data/pki/reqs/pvpnreq
+    # key: /opt/Dockovpn_data/pki/private/pvpnkey
 
-    easyrsa sign-req server PVPN << EOF3
+    easyrsa sign-req server pvpn << EOF3
 yes
 EOF3
-    # Certificate created at: /opt/Dockovpn_data/pki/issued/PVPN.crt
+    # Certificate created at: /opt/Dockovpn_data/pki/issued/pvpncrt
 
     openvpn --genkey --secret ta.key << EOF4
 yes
@@ -62,7 +62,7 @@ EOF4
 fi
 
 # Copy server keys and certificates
-cp pki/ca.crt pki/issued/PVPN.crt pki/private/PVPN.key pki/crl.pem ta.key /etc/openvpn
+cp pki/ca.crt pki/issued/pvpncrt pki/private/pvpnkey pki/crl.pem ta.key /etc/openvpn
 
 cd "$APP_INSTALL_PATH"
 
