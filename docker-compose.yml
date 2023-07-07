@@ -29,6 +29,7 @@ services:
       AUTH_KEY: ${AUTH_KEY}
       HOST_ADDR: ${HOST_ADDR}
       VPN_PORT: ${VPN_PORT}
+      API_PORT: ${API_PORT}
     volumes:
       #      - ${LOG_PATH}:/app/logs:delegated
       - ${COMMON_PATH}:/app/common:delegated
