@@ -31,7 +31,7 @@ class ConfigService(BaseService):
         f.close()
 
         cacert = self.certService.retrieve_cert(ca_cert_file_path)
-        cakey = self.certService.retrieve_key(ca_key_file_path)
+        cakey = self.certService.retrieve_key(ca_key_file_path, '')
 
         with open(ta_key_file_path, 'r') as file:
             takey = file.read()
