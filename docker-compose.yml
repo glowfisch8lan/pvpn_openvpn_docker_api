@@ -1,0 +1,41 @@
+version: "3.9"
+
+networks:
+  ovpn:
+    name: ovpn
+    driver: bridge
+    enable_ipv6: false
+
+
+services:
+  ovpn_instance:
+    container_name: ovpn_instance
+    extends:
+      file: dockovpn/docker-compose.yml
+      service: dockovpn
+    environment:
+      HOST_ADDR : ${HOST_ADDR}
+      VPN_PORT : ${VPN_PORT}
+    volumes:
+      - ./crt:/opt/crt
+      - ./ccd:/opt/ccd
+    networks:
+      - ovpn
+
+  ovpn_api:
+    container_name: ovpn_api
+    extends:
+      file: manager/docker-compose.yml
+      service: ovpn
+    environment:
+      AUTH_KEY: ${AUTH_KEY}
+      HOST_ADDR: ${HOST_ADDR}
+      VPN_PORT: ${VPN_PORT}
+    volumes:
+      #      - ${LOG_PATH}:/app/logs:delegated
+      - ${COMMON_PATH}:/app/common:delegated
+      - ${KEY_PATH}:/app/keys:delegated
+      - ${OVPN_PATH}:/app/vpn:delegated
+      - ${CCD_PATH}:/app/ccd:delegated
+    networks:
+      - ovpn

@@ -1,0 +1,21 @@
+version: '3'
+services:
+  ovpn:
+    build: ./app
+    container_name: ovpn
+    ports:
+     - "${PORT}:5000/tcp"
+    restart: always
+    environment:
+      - DEBUG=${DEBUG}
+    entrypoint: ["/app/bootstrap.sh"]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./app:/app:delegated
+      - ./app/docker/supervisor/conf.d:/etc/supervisor/conf.d:delegated
+#      - ${LOG_PATH}:/app/logs:delegated
+#      - ${COMMON_PATH}:/app/common:delegated
+#      - ${KEY_PATH}:/app/keys:delegated
+#      - ${OVPN_PATH}:/app/vpn:delegated
+#      - ${CCD_PATH}:/app/ccd:delegated
