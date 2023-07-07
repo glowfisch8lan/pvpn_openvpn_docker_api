@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 export PORT=8089;
 
-docker-compose up -d --build --force-recreate
+docker-compose up -d --build
 
 docker-compose exec -ti ovpn_instance sh -c "cat /etc/openvpn/ca.crt > /opt/crt/ca.crt"
 docker-compose exec -ti ovpn_instance sh -c "cp /etc/openvpn/PVPN.key /opt/crt/server.key"
