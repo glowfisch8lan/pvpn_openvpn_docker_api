@@ -1,8 +1,7 @@
-version: "3.9"
+version: "3.3"
 
 networks:
   ovpn:
-    name: ovpn
     driver: bridge
     enable_ipv6: false
 
