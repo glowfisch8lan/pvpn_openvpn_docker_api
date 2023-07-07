@@ -52,7 +52,7 @@ yes
 EOF3
     # Certificate created at: /opt/Dockovpn_data/pki/issued/pvpn.crt
 
-    openvpn --genkey --secret ta.key << EOF4
+    openvpn --genkey secret ta.key << EOF4
 yes
 EOF4
 
