@@ -1,4 +1,9 @@
 SHELL := /bin/bash
+
+rebuild:
+	export DEBUG=0; \
+	./rebuild.sh
+
 prod:
 	export DEBUG=0; \
 	./deploy.sh
