@@ -31,12 +31,14 @@ class ConfigService(BaseService):
         f.close()
 
         cacert = self.certService.retrieve_cert(ca_cert_file_path)
-        cakey = self.certService.retrieve_key(ca_key_file_path, b'124578')
+        cakey = self.certService.retrieve_key(ca_key_file_path)
+
         with open(ta_key_file_path, 'r') as file:
             takey = file.read()
 
-        with open(dh_key_file_path, 'r') as file:
-            dhkey = file.read()
+        with open(ta_key_file_path, 'r') as file:
+            takey = file.read()
+
         key = self.certService.make_keypair()
         csr = self.certService.make_csr(key, cn)
         # with open(os.getenv("PKI_CSR_KEY_PATH") + output_ovpn + '.req', 'w') as file:
@@ -55,14 +57,16 @@ class ConfigService(BaseService):
         # tacertdump = self.certService.dump_file_in_mem(takey)
         # dhkeydump = self.certService.dump_file_in_mem(dhkey)
 
-        ovpn = "%s\n<ca>\n%s\n</ca>\n<cert>\n%s</cert>\n<key>\n%s</key>\n\n<tls-auth>\n%s\n</tls-auth>\n\n<dh>\n%s\n</dh>\n\n%s" % (
+        ovpn = "%s\n" \
+               "<ca>\n%s\n</ca>" \
+               "\n<cert>\n%s</cert>\n" \
+               "<key>\n%s</key>\n" \
+               "\n<tls-auth>\n%s\n</tls-auth>\n" % (
             common,
             cacertdump.decode(),
             clientcert.decode(),
             clientkey.decode(),
-            takey,
-            dhkey,
-            "remote vpn.pure.org.ru 1194"  # todo убрать в конфиг
+            takey
         )
 
         # Write our file.

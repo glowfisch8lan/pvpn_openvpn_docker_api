@@ -23,7 +23,7 @@ class ConfigController(Controller):
 
     def create(self):
         ca_cert_file_path = '/app/keys/ca.crt'
-        ca_key_file_path = '/app/keys/server.key'
+        ca_key_file_path = '/app/keys/ca.key'
         ta_key_file_path = '/app/keys/ta.key'
         dh_key_file_path = '/app/keys/dh.pem'
         common_path = '/app/common/common.ovpn'

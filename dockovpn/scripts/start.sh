@@ -63,7 +63,7 @@ fi
 
 echo 'COPY SERVER KEYS TO VPN'
 # Copy server keys and certificates
-cp pki/ca.crt pki/issued/pvpn.crt pki/private/pvpn.key pki/crl.pem ta.key /etc/openvpn
+cp pki/ca.crt pki/issued/pvpn.crt pki/private/ca.key pki/private/pvpn.key pki/crl.pem ta.key /etc/openvpn
 
 cd "$APP_INSTALL_PATH"
 
