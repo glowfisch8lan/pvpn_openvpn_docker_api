@@ -61,12 +61,14 @@ class ConfigService(BaseService):
                "<ca>\n%s\n</ca>" \
                "\n<cert>\n%s</cert>\n" \
                "<key>\n%s</key>\n" \
-               "\n<tls-auth>\n%s\n</tls-auth>\n" % (
+               "\n<tls-auth>\n%s\n</tls-auth>\n" \
+               "%s" % (
             common,
             cacertdump.decode(),
             clientcert.decode(),
             clientkey.decode(),
-            takey
+            takey,
+            'remote' + os.getenv('HOST_ADDR') + ' ' + os.getenv('VPN_PORT')
         )
 
         # Write our file.
