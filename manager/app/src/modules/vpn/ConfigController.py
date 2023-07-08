@@ -81,6 +81,6 @@ class ConfigController(Controller):
 
     def download_file(self, cn):
         filename = cn
-        requested_path = '/app/vpn/' + filename + '.ovpn'
+        requested_path = '/app/vpn/' + cn.replace('.ovpn', '') + '.ovpn'
         return send_file(os.fspath(requested_path), mimetype='application/vpn', download_name=filename + '.ovpn',
                          as_attachment=True)
