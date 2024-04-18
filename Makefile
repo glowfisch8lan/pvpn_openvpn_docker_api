@@ -21,7 +21,6 @@ restart:
 	docker restart ovpn_instance
 
 copykey:
-	export DEBUG=1; \
 	docker-compose exec -ti ovpn_instance sh -c "cp /etc/openvpn/ca.crt  /opt/crt/ca.crt"
 	docker-compose exec -ti ovpn_instance sh -c "cp /etc/openvpn/pvpn.key /opt/crt/server.key"
 	docker-compose exec -ti ovpn_instance sh -c "cp /etc/openvpn/ca.key /opt/crt/ca.key"
